@@ -2,23 +2,159 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>icp_hello_world_rust_motoko</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICD App</title>
     <base href="/" />
     <link rel="icon" href="favicon.ico" />
     <link type="text/css" rel="stylesheet" href="main.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+      }
+      main {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      form {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background-color: #f7f7f7;
+      }
+      form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+      form input[type="text"],
+      form input[type="number"] {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+      form button[type="submit"],
+      #loginButton,
+      #logoutButton,
+      #getClients {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      form button[type="submit"]:disabled,
+      #loginButton:disabled,
+      #logoutButton:disabled,
+      #getClients:disabled {
+        background-color: #cccccc;
+      }
+      form button[type="submit"]:hover:not(:disabled),
+      #loginButton:hover:not(:disabled),
+      #logoutButton:hover:not(:disabled),
+      #getClients:hover:not(:disabled) {
+        background-color: #0056b3;
+      }
+      .table-container {
+        overflow-x: auto;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+        min-width: 600px;
+      }
+      th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .delete-btn {
+        background-color: #dc3545;
+        color: #ffffff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .delete-btn:hover {
+        background-color: #c82333;
+      }
+      @media (max-width: 600px) {
+        form {
+          padding: 10px;
+        }
+        form input[type="text"],
+        form input[type="number"] {
+          width: calc(100% - 20px);
+          padding: 8px;
+          margin-bottom: 8px;
+        }
+        form button[type="submit"],
+        #loginButton,
+        #logoutButton,
+        #getClients {
+          padding: 8px;
+          font-size: 14px;
+        }
+      }
+    </style>
   </head>
   <body>
     <main>
       <img src="logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#">
-        <label for="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
+      <br /><br />
+      <button id="loginButton">Login with Internet Identity</button>
+      <button id="logoutButton" style="display: none;">Logout</button>
+      <p id="userId"></p>
+      <form id="clientForm">
+        <label for="name">Enter client name: &nbsp;</label>
+        <input id="name" type="text" required />
+        <button type="submit">Register Client</button>
       </form>
+      <form id="deviceForm">
+        <label for="clientId">Client ID: &nbsp;</label>
+        <input id="clientId" type="text" required />
+        <label for="deviceId">Device ID: &nbsp;</label>
+        <input id="deviceId" type="text" required />
+        <label for="amperios">Amperios: &nbsp;</label>
+        <input id="amperios" type="number" required />
+        <button type="submit">Register Device</button>
+      </form>
+      <form id="consumptionForm">
+        <label for="clientIdConsumption">Client ID: &nbsp;</label>
+        <input id="clientIdConsumption" type="text" required />
+        <label for="consumedEnergy">Energy Consumed: &nbsp;</label>
+        <input id="consumedEnergy" type="number" required />
+        <label for="producedEnergy">Energy Produced: &nbsp;</label>
+        <input id="producedEnergy" type="number" required />
+        <button type="submit">Register Consumption</button>
+      </form>
+      <button id="getClients">Get Clients</button>
       <section id="greeting"></section>
+      <section class="table-container">
+        <table id="clientsTable"></table>
+      </section>
     </main>
+    <script type="module" src="index.js"></script>
   </body>
 </html>
