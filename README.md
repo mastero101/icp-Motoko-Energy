@@ -1,60 +1,88 @@
-# ICP Hello World Motoko
+ICP Hello World Motoko
 
-This repository provides a quick and easy way to start developing a canister smart contract for the [Internet Computer](https://internetcomputer.org/) in Motoko.
-The repository can be used with macOS, Windows or Linux.
+Este proyecto es una aplicación web que interactúa con el backend de ICP (Internet Computer Protocol) utilizando el lenguaje de programación Motoko. La aplicación permite a los usuarios registrarse e iniciar sesión mediante Internet Identity, registrar clientes, dispositivos y consumo de energía, así como visualizar y eliminar registros.
 
-## Getting Started
+*Requisitos Previos
+*Instalación
+*Uso
+*Estructura del Proyecto
 
-To get started with Gitpod, click the button below:
+Requisitos Previos
+Asegúrate de tener instalados los siguientes requisitos previos antes de comenzar:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-motoko)
+-Node.js (v14 o superior)
+-DFX SDK de DFINITY
+-NPM (normalmente incluido con Node.js)
+-Instalación
 
-If you rather want to use GitHub Codespaces, click this button instead:
+Sigue estos pasos para configurar el proyecto en tu máquina local:
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-motoko?quickstart=1)
+Clona el repositorio:
 
-If you prefer running VS Code locally and not in the browser, click "Codespaces: ..." or "Gitpod" in the bottom left corner and select "Open in VS Code" in the menu that appears. 
-If prompted, proceed by installing the recommended plugins for VS Code.
+git clone https://github.com/mastero101/icp-Motoko-Energy
 
-### Running your Project
+cd icp-Motoko-Energy
 
-After the IDE has opened, run `dfx deploy` in the terminal to deploy the frontend and backend. 
-Click on the first green link at the end of the output to see your canister's frontend in the browser.
-To interact with the backend canister, click on the second green link.
-**NOTE**: When developing in GitHub Codespaces, run `./scripts/canister_urls.py` and use the links that are shown there.
+Instala las dependencias del proyecto:
 
-For interactive development of the frontend canister, you can also start a node server by running `npm start`.
-You can find your canister's frontend running under http://localhost:8080.
+npm install
 
-If you make changes to the backend canister, remember to call `dfx deploy` first; it suffices to reload the frontend canister's webpage to reflect the changes you've made.
-If your environment was restarted or has been inactive over some time, you might need to run `dfx start --background` before running `dfx deploy`.
+Inicia el servidor de desarrollo de DFINITY:
 
-## Testing your Project
+dfx start --background
 
-To run the [integration tests](/src/icp_hello_world_motoko_backend/tests/integration_tests.py#L21) for your backend canister, first run `dfx build` to build the canister, and then `./src/icp_hello_world_motoko_backend/tests/integration_tests.py`.
-If the canisters have not yet been created, run `dfx canister create --all` before `dfx build`.
+Despliega el backend del proyecto en el servidor de desarrollo:
 
-## Local Development
+dfx deploy
 
-If you prefer to develop locally, first install [Docker](https://www.docker.com/get-started/) and [VS Code](https://code.visualstudio.com/) and start them on your machine.
-Next, click the following button to open the dev container locally:
+Inicia la aplicación frontend:
 
-[![Open locally in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/dfinity/icp-hello-world-motoko)
+npm start
 
-If prompted, install the required/recommended plugins for VS Code.
+Abre tu navegador y navega a http://localhost:8080 para ver la aplicación en funcionamiento.
 
-## Documentation and Guides
+Uso
 
-To learn more before you start working on this project, see the following documentation available online:
+Inicio de Sesión
 
-- [Quick Start](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-locally)
-- [SDK Developer Tools](https://internetcomputer.org/docs/current/developer-docs/setup/install)
-- [Motoko Programming Language Guide](https://internetcomputer.org/docs/current/motoko/main/motoko)
-- [Motoko Language Quick Reference](https://internetcomputer.org/docs/current/motoko/main/language-manual)
+Haz clic en el botón "Login" para iniciar sesión utilizando Internet Identity. Una vez autenticado, verás tu principal ID en la interfaz.
 
-If you want to start working on your project right away, you might want to try the following commands to familiarize yourself with `dfx`:
+Registro de Cliente
 
-```bash
-dfx help
-dfx canister --help
-```
+Completa el campo "Client ID" (prellenado con tu principal ID) y haz clic en "Register Client".
+
+Registro de Dispositivo
+
+Completa los campos "Client ID", "Device ID" y "Amperios" y haz clic en "Register Device".
+
+Registro de Consumo
+
+Completa los campos "Client ID", "Consumed Energy" y "Produced Energy" y haz clic en "Register Consumption".
+
+Visualización de Clientes
+
+Haz clic en el botón "Get Clients" para obtener la lista de clientes registrados y sus respectivos detalles.
+
+Eliminación de Clientes y Dispositivos
+
+Haz clic en los botones "Eliminar" junto a cada cliente o dispositivo para eliminarlos.
+
+Estructura del Proyecto
+
+.
+├── src
+│   ├── icp_hello_world_motoko_backend
+│   │   ├── main.mo
+│   ├── frontend
+│   │   ├── assets
+│   │   │   ├── logo2.svg
+│   │   ├── src
+│   │   │   ├── index.js
+│   │   │   ├── main.css
+├── README.md
+├── package.json
+├── dfx.json
+main.mo: Archivo principal del backend escrito en Motoko.
+index.js: Lógica del frontend en JavaScript.
+main.css: Estilos del frontend.
+dfx.json: Configuración del proyecto DFINITY.
