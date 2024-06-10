@@ -26,8 +26,8 @@ Sigue estos pasos para configurar el proyecto en tu máquina local:
 1. Clona el repositorio:
 
     ```bash
-    git clone https://github.com/tu-usuario/tu-repositorio.git
-    cd tu-repositorio
+    git clone https://github.com/mastero101/icp-Motoko-Energy
+    cd icp-Motoko-Energy
     ```
 
 2. Instala las dependencias del proyecto:
