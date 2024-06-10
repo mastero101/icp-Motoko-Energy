@@ -8,8 +8,6 @@ Este proyecto es una aplicación web que interactúa con el backend de ICP (Inte
 - [Instalación](#instalación)
 - [Uso](#uso)
 - [Estructura del Proyecto](#estructura-del-proyecto)
-- [Contribuciones](#contribuciones)
-- [Licencia](#licencia)
 
 ## Requisitos Previos
 
